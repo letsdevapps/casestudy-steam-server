@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  eureka:
+    build:
+      context: ./eureka-service
+    ports:
+      - "8761:8761"
+    networks:
+      - backend
+
+  auth-service:
+    build:
+      context: ./auth-service
+    depends_on:
+      - eureka
+    ports:
+      - "8081:8081"
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL=http://eureka:8761/eureka/
+    volumes:
+      - ./wait-for-eureka.sh:/usr/local/bin/wait-for-eureka.sh
+    networks:
+      - backend
+
+  product-service:
+    build:
+      context: ./product-service
+    depends_on:
+      - eureka
+    ports:
+      - "8082:8082"
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL=http://eureka:8761/eureka/
+    volumes:
+      - ./wait-for-eureka.sh:/usr/local/bin/wait-for-eureka.sh
+    networks:
+      - backend
+
+  order-service:
+    build:
+      context: ./order-service
+    depends_on:
+      - eureka
+    ports:
+      - "8083:8083"
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL=http://eureka:8761/eureka/
+    volumes:
+      - ./wait-for-eureka.sh:/usr/local/bin/wait-for-eureka.sh
+    networks:
+      - backend
+
+  gateway-service:
+    build:
+      context: ./gateway-service
+    depends_on:
+      - eureka
+      - auth-service
+      - product-service
+      - order-service
+    ports:
+      - "8080:8080"
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL=http://eureka:8761/eureka/
+    volumes:
+      - ./wait-for-eureka.sh:/usr/local/bin/wait-for-eureka.sh
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+
