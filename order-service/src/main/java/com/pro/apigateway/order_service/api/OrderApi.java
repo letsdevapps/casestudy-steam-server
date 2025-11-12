@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class OrderApi {
 
-    @GetMapping("/orders")
-    public String getOrders() {
-        return "Order Service - List of Orders";
-    }
+//    @GetMapping("/")
+//    public String getOrders() {
+//        return "Order Service - List of Orders";
+//    }
 }
