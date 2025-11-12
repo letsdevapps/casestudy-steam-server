@@ -1,4 +1,4 @@
-FROM openjdk:21-jdk-slim AS build
+FROM ubuntu:latest AS build
 RUN apt-get update && apt-get install maven -y
 
 WORKDIR /app
@@ -7,7 +7,8 @@ COPY src ./src
 
 RUN mvn clean package -DskipTests
 
-FROM openjdk:21-jdk-slim
+FROM ubuntu:latest
+RUN apt-get update && apt-get install openjdk-21-jdk -y
 WORKDIR /app
 COPY --from=build /app/target/*.jar springboot-microservices-eureka.jar
 

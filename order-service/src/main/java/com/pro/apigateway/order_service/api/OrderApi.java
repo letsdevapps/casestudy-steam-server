@@ -1,4 +1,4 @@
-package com.pro.apigateway.order_service.order;
+package com.pro.apigateway.order_service.api;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

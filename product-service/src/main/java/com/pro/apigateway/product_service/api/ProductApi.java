@@ -1,4 +1,4 @@
-package com.pro.apigateway.product_service.product;
+package com.pro.apigateway.product_service.api;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

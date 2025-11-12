@@ -1,4 +1,4 @@
-package com.pro.apigateway.auth_service.login;
+package com.pro.apigateway.auth_service.api;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
