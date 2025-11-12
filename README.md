@@ -1,14 +1,18 @@
-#Iniciar e Finalizar removendo Docker Compose
+# Iniciar e Finalizar removendo Docker Compose
 
 	docker-compose up --build
 	
 	docker-compose down -v --rmi all
 
-#Descrição
+# Descrição
 
-Projeto demonstrativo do conceito de Microserviços aplicando Api Gateway para roteamento e Eureka para descobrir e anexar os projetos endpoint
+Este estudo de caso explora e analisa a implementação de um sistema multiplataforma inspirado nas funcionalidades multiplataforma do Steam
 
-#Estrutura
+# Description
+
+This case study explores and analyzes the implementation of a multi-platform system inspired by Steam cross-platform capabilities
+
+# Estrutura
 
 * Projeto 1: Eureka Server
 * Projeto 2: Simulação Auth
